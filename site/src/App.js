@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import api from './services/api';
 
 import './global.css';
-import './Sidebar.css';
 import './Main.css';
 import './App.css';
 
 import DevRegister from './components/DevRegister';
 import DevItem from './components/DevItem';
+import Dialog from './components/ui/dialog';
 
 function App() {
   const [ devs, setDevs ] = useState([]);
+  const [ classNames, setClassNames ] = useState('');
+  const [ dlgMessage, setDlgMessage ] = useState('');
 
   useEffect(() => {
     async function loadDevs() {
@@ -22,7 +24,18 @@ function App() {
 
   async function handleAddDev(data) {
     const response = await api.post('/devs', data)
-    setDevs([...devs, response.data]);
+    if (response.data.message === 'Dev already registered!') {
+      setClassNames('error')
+      setDlgMessage('O usuário ja existe')
+
+      setTimeout(() => {
+        setClassNames('');
+        setDlgMessage('');
+      }, 2000);
+    }
+    else {
+      setDevs([...devs, response.data]);
+    }
   }
 
   return (
@@ -38,6 +51,7 @@ function App() {
           ))}
         </ul>
       </main>
+      <Dialog message={dlgMessage} classNames={classNames}/>
     </div>
   );
 }

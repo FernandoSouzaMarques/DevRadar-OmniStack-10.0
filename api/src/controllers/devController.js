@@ -9,6 +9,7 @@ module.exports = {
     const { github_username, techs, latitude, longitude } = req.body;
 
     let dev = await Dev.findOne({ github_username });
+    console.log(dev)
 
     if (!dev) {
       const response = await axios.get(`https://api.github.com/users/${github_username}`);
@@ -37,6 +38,8 @@ module.exports = {
       )
 
       sendMessage(sendSocketMessageTo, 'new-dev', dev);
+    } else {
+      return res.json({ message: 'Dev already registered!' })
     }
 
     return res.json(dev)
