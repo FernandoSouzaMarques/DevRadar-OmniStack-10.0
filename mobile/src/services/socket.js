@@ -5,6 +5,10 @@ const socket = socketio(baseURL, {
   autoConnect: false,
 });
 
+function subscribleToNewDev(subscribleFunction) {
+  socket.on('new-dev', subscribleFunction);
+}
+
 function connect(latitude, longitude, techs) {
   socket.io.opts.query = {
     latitude,
@@ -21,4 +25,5 @@ function disconnect() {
 export {
   connect,
   disconnect,
+  subscribleToNewDev
 }
