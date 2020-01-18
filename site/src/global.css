@@ -15,9 +15,20 @@ body,
 
 body {
   background-color: #e5e6f0;
-  background-image: url(./images/bg-map.png);
-  /* background-size: contain; */
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url(./images/bg-map.png);
+  transform: rotate(-10deg);
 }
 
 body,
