@@ -70,6 +70,9 @@ function Main({ navigation }) {
   return (
     <>
       <MapView onRegionChangeComplete={handleRegionChanged} initialRegion={currentRegion} style={ styles.map }>
+        <Marker coordinate={currentRegion}>
+          <MaterialIcons name="account-circle" size={30} color="#8e4dff"/>
+        </Marker>
         {devs.map(dev => (
           <Marker key={dev._id} coordinate={{ latitude: dev.location.coordinates[1], longitude: dev.location.coordinates[0]}}>
             <Image style={ styles.avatar } source={{ uri: dev.avatar_url }}/>
@@ -111,8 +114,9 @@ const styles = StyleSheet.create({
   avatar: {
     width: 54,
     height: 54,
-    borderRadius: 4,
+    borderRadius: 5,
     borderWidth: 4,
+    backgroundColor: '#ffffff',
     borderColor: '#ffffff'
   },
   callout: {
