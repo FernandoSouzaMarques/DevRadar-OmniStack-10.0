@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import Main from './pages/Main';
 import Profile from './pages/Profile';
+import Chat from './pages/Chat';
 
 const Routes = createAppContainer(
   createStackNavigator({
@@ -16,6 +17,12 @@ const Routes = createAppContainer(
       screen: Profile,
       navigationOptions: {
         title: 'Perfil do Github'
+      }
+    },
+    Chat: {
+      screen: Chat,
+      navigationOptions: {
+        title: 'ChatDev'
       }
     },
   }, {

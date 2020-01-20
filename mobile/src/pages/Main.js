@@ -89,6 +89,14 @@ function Main({ navigation }) {
           </Marker>
         ))}
       </MapView>
+      <View style={styles.openChat}>
+        <TouchableOpacity style={styles.loadButton}
+        onPress={() => {
+          navigation.navigate('Chat')
+        }}>
+          <MaterialIcons name="message" size={20} color="#ffffff"/>
+        </TouchableOpacity>
+      </View>
       <View style={styles.searchForm}>
         <TextInput
           style={styles.searchInput}
@@ -166,6 +174,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 15,
+  },
+  openChat: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    zIndex: 5,
   }
 })
 
