@@ -89,14 +89,14 @@ function Main({ navigation }) {
           </Marker>
         ))}
       </MapView>
-      <View style={styles.openChat}>
+      {/* <View style={styles.openChat}>
         <TouchableOpacity style={styles.loadButton}
         onPress={() => {
           navigation.navigate('Chat')
         }}>
           <MaterialIcons name="message" size={20} color="#ffffff"/>
         </TouchableOpacity>
-      </View>
+      </View> */}
       <View style={styles.searchForm}>
         <TextInput
           style={styles.searchInput}
